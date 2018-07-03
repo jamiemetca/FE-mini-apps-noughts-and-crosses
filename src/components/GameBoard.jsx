@@ -1,18 +1,25 @@
 import React from "react";
 import "./GameBoard.css";
 
-function GameBoard() {
+function GameBoard(props) {
   return (
-    <div class="grid">
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
-      <div class="cell" />
+    <div className="grid">
+      {props.gridArray.map((cell, index) => {
+        let boxInput;
+        if (props.gridArray[index]) {
+          boxInput = props.gridArray[index];
+        }
+        return (
+          <button
+            key={index}
+            value={index}
+            className="cell"
+            onClick={props.fillBox}
+          >
+            {boxInput}
+          </button>
+        );
+      })}
     </div>
   );
 }
